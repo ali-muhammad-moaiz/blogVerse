@@ -93,6 +93,34 @@ class DocumentService{
             console.log("DocumentService :: getAllDocuments :: exception ", exception);
         }
     }
+
+    async createFile(file){
+        try {
+            return this.storage.createFile(
+                config.appWriteBucketId,
+                ID.unique(),
+                file
+            );
+        } catch (exception) {
+            console.log("DocumentService :: createFile :: exception ", exception);
+        }
+    }
+
+    async getFilePreview(fileId){
+        try {
+            return this.storage.getFilePreview(config.appWriteBucketId, fileId);
+        } catch (exception) {
+            console.log("DocumentService :: getFilePreview :: exception ", exception);
+        }
+    }
+
+    async deleteFile(fileId){
+        try {
+            return this.storage.deleteFile(config.appWriteBucketId, fileId);
+        } catch (exception) {
+            console.log("DocumentService :: deleteFile :: exception ", exception);
+        }
+    }
 }
 
 const documentService = new DocumentService();
